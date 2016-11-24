@@ -1,0 +1,97 @@
+\documentclass[12 pt,a4paper]{report}
+
+\usepackage{amstext}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb,amsthm,amsmath,amscd}     
+\usepackage{latexsym}                         
+%\usepackage{enumerate}
+\usepackage[ngerman]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{fancyheadings}
+\usepackage{float}
+%\usepackage{verbatim} fuer Quelltexteingabe
+
+\author{}
+\title{}
+
+%Befehle Block--------------------------
+%\newcommand{\qed}{\hfill$\square$}
+%Theorem Umgebungen---------------------
+
+\newtheorem{thm}{\textsc{Satz}}[subsection]
+\newtheorem{cor}[thm]{\textsc{Korollar}}
+\newtheorem{lem}[thm]{\textsc{Lemma}}
+\newtheorem{prop}[thm]{\textsc{Proposition}}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{\textsc{Definition}}
+\newtheorem{rem}[thm]{Bemerkung}
+\newtheorem{exa}[thm]{Beispiel}
+\newtheorem{bez}[thm]{Bezeichnung}
+\newtheorem{beh}[thm]{Behauptung}
+
+%---------------------------------------
+\pagestyle{fancy}
+\rhead{}
+\begin{document}
+\setlength\parindent{0pt}
+
+%Titel Seite-----------------------------
+\begin{titlepage}
+\begin{center}
+
+\vspace*{1.0cm}
+\huge
+\textsc{\bf{Rekurrente Netze\\
+		-\\
+    Das Elman Netz}}
+
+\vspace*{1.0cm}
+\Large
+\textsc{Bachelorarbeit}
+
+\vspace*{4.0cm}
+\textsc{
+\normalsize{eingereicht von} \\[0.5\baselineskip]
+{\large \ Stefan Vikoler}
+}
+
+\vspace*{3.0cm}
+\textsc{
+\normalsize{Betreuerin:\\
+Dr. Claudia-Lidia Badea}
+}
+
+\vspace*{1.0cm}
+\textsc{
+\normalsize{Universit\"at Salzburg \\
+Fachbereich Computerwissenschaften\\
+Jakob-Haringer-Straﬂe 2\\
+A-5020 Salzburg\\
+Austria\\
+Juni 2012}
+}
+
+\end{center}
+
+\end{titlepage}
+
+%Include Block---------------------------
+\include{abstract}
+\tableofcontents
+\include{introduction}
+\include{recurrent}
+\include{elman}
+\include{algorithm}
+\include{system_identification}
+\include{funktionen_approximation}
+\include{abbildung}
+%\listoffigures
+
+%----------------------------------------
+\bibliographystyle{plain}
+\nocite{*}
+\bibliography{literatur}
+%----------------------------------------
+\end{document}

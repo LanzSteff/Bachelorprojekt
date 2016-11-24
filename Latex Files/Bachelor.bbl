@@ -1,0 +1,36 @@
+\begin{thebibliography}{1}
+
+\bibitem{badea}
+Claudia-Lidia Badea.
+\newblock {\em Grundlagen Künstliche Neuronale Netze}.
+\newblock Vorlesungsskript an der Universität Salzburg, Fachbereich
+  Computerwissenschaften, 2012.
+
+\bibitem{cruse}
+Holk Cruse.
+\newblock {\em Neural Networks as Cybernetic Systems}.
+\newblock Department of Biological Cybernetics and Theoretical Biology,
+  Bielefeld University, second edition, 2006.
+
+\bibitem{elman}
+JEFFREY~L. ELMAN.
+\newblock {\em Finding Structure in Time}.
+\newblock COGNITIVE SCIENCE, University of California, San Diego, 1990.
+
+\bibitem{felzer}
+Torsten Felzer.
+\newblock {\em Analyse menschlicher Bewegungssequenzen im Hinblick auf eine
+  Übertragbarkeit auf KÜNSTLICHE LERNENDE SYSTEME}.
+\newblock Technische Hochschule Darmstadt, Darmstadt, 2002.
+
+\bibitem{haykin}
+Simon Hayking.
+\newblock {\em Neuronal Networks: a conprehensive foundation}.
+\newblock Prentice-Hall, Inc., New Jersey, second edition, 1999.
+
+\bibitem{pham}
+D.~T. Pham and X.~Liu.
+\newblock {\em Training of Elman networks and dynamic system modelling}.
+\newblock volume 27. International Journal of Systems Science, 1996.
+
+\end{thebibliography}

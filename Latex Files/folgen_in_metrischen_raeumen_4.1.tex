@@ -1,0 +1,188 @@
+\section{Folgen in metrischen Räumen}
+
+In diesem Abschnitt betrachten wir Folgen in metrischen Räumen und erläutern unter anderem die gundlegenden Begriffe der Beschränktheit und Konvergenz von Folgen sowie die Cauchyfolgen und die Vollständigkeit. Weiters bezeichne $X$ stets einen metrischen Raum mit einer Metrik $d$.
+
+\begin{defn}[Beschränktheit]
+Sei $(X,d)$ ein metrischer Raum. Eine Folge $(x_n)_{n \in \mathbb{N}}$ in $X$ heißt beschränkt, wenn es ein $n_0 \in \mathbb{N}$ gibt, sodass die Menge $\lbrace x_{n_0}, x_{n_0+1}, \ldots \rbrace$ beschränkt ist.
+\end{defn}
+
+\begin{defn}[Konvergenz]
+Sei $(X,d)$ ein metrischer Raum. Eine Folge $(x_n)_{n \in \mathbb{N}}$ in $X$ heißt konvergent gegen ein Element $x \in X$, falls für alle $\varepsilon > 0$ ein $N \in \mathbb{N}$ existiert, sodass $d(x_n,x) < \varepsilon$ für alle $n \geq N$ gilt.\\
+Das Element $x \in X$ heißt Grenzwert der Folge $(x_n)_{n \in \mathbb{N}}$.
+\end{defn}
+
+\begin{rem}
+Eine andere Version der Definition von Konvergenz wäre wie folgt:\\
+Eine Folge $(x_n)_{n \in \mathbb{N}}$ in $X$ heißt konvergent gegen $x \in X$, falls in jeder offenen Kugel um $x$ fast alle Folgenglieder liegen.
+\end{rem}
+
+\begin{thm}
+In einem metrischen Raum $(X,d)$ konvergiert jede konvergente Folge $(x_n)_{n \in \mathbb{N}}$ in $X$ gegen genau ein Element $x \in X$.
+\end{thm}
+
+\begin{proof}
+Angenommen die Folge $(x_n)_{n \in \mathbb{N}}$ konvergiert in $X$ und besitzt zwei verschiedene Grenzwerte $x$ und $y$, $x,y \in X$. Dann ist aber $d(x,y) > 0$ und wir setzen $\varepsilon = \frac{1}{2} d(x,y)$. Weiters gibt es $N_1,N_2 \in \mathbb{N}$, sodass $d(x_n,x) < \frac{1}{2} d(x,y)$ für alle $n \geq N_1$ und $d(x_n,y) < \frac{1}{2} d(x,y)$ für alle $n \geq N_2$. Sei $N = \max\lbrace N_1,N_2 \rbrace$. Dann gilt für alle $n \geq N$
+\begin{align*}
+	d(x,y) &\leq d(x,x_n) + d(x_n,y)\\
+	&< \frac{1}{2} d(x,y) + \frac{1}{2} d(x,y)\\
+	&= d(x,y),
+\end{align*}
+was ein Widerspruch ist. Somit ist der Grenzwert einer Folge eindeutig.
+\end{proof}
+
+\begin{rem}
+Falls eine Folge $(x_n)_{n \in \mathbb{N}}$ gegen ein Element $x \in X$ konvergiert, so schreibt man auch $\lim\limits_{n \rightarrow \infty} x_n = x$. In metrischen Räumen entspricht dies demselben, wenn die Folge $(d(x_n,x))_{n \in \mathbb{N}}$ reeller Zahlen gegen Null konvergiert und man schreibt $\lim\limits_{n \rightarrow \infty} d(x_n,x) = 0$.
+\end{rem}
+
+\begin{thm} \label{aus konv folgt be}
+In einem metrischen Raum $(X,d)$ ist jede konvergente Folge $(x_n)_{n \in \mathbb{N}}$ in $X$ beschränkt.
+\end{thm}
+
+\begin{proof}
+Sei $x$ der Grenzwert der Folge $(x_n)_{n \in \mathbb{N}}$ und sei $\varepsilon = 1$. Dann gibt es ein $N \in \mathbb{N}$, sodass $d(x_n,x) < 1$ ist für alle $n \geq N$. Wir setzen nun $r := \max\lbrace d(x_1,x),d(x_2,x),\ldots,d(x_{N-1},x),1 \rbrace$. Damit gilt aber, dass alle Folgenglieder in der offenen Kugel um $x$ mit Radius $r+1$ liegen und somit ist die Folge beschränkt.
+\end{proof}
+
+Die Umkehrung des Satzes \ref{aus konv folgt be} gilt nicht. Dies zeigt das nächste Beispiel.
+\begin{exa}
+Seien $X = \mathbb{R}$ und $d(x,y) = |x-y|$. Wir betrachten die Folge $(x_n)_{n \in \mathbb{N}} := \left((-1)^n\right)_{n \in \mathbb{N}}$. Es gilt:
+$$(-1)^n = \begin{cases}
+1 &\text{, für } n \text{ gerade}\\
+-1 &\text{, für } n \text{ ungerade,}
+\end{cases}$$
+und
+$$d(x,y) = \begin{cases}
+	2 &\text{, für } x = x_n \text{ und } y = x_{n+1}\\
+	0 &\text{, für } x = x_n \text{ und } y = x_{n+2}.
+\end{cases}$$
+Daher ist die Folge $\left((-1)^n\right)_{n \in \mathbb{N}}$ zwar beschränkt, aber keinesfalls konvergent.
+\end{exa}
+
+Als nächstes betrachten wir nun Folgen von Funktionen in metrischen Räumen und erläutern die Begriffe der punktweisen beziehungsweise gleichmäßigen Konvergenz.
+
+\begin{defn}[punktweise Konvergenz]
+Seien $(X,d)$ ein metrischer Raum und $A$ eine Teilmenge von $X$, $A \subseteq X$. Eine Folge von Funktionen $(f_n)_{n \in \mathbb{N}}$ mit $f_n: A \rightarrow \mathbb{R}$ heißt punktweise konvergent gegen $f$, $f: A \rightarrow \mathbb{R}$, falls für jedes $x \in A$ $\lim\limits_{n \rightarrow \infty} f_n(x) = f(x)$ gilt.\\
+Mit anderen Worten heißt das, wenn es zu jedem $x \in A$ und für alle $\varepsilon > 0$ ein $N \in \mathbb{N}$, $N = N(x,\varepsilon)$, existiert, sodass $d(f_n(x),f(x)) < \varepsilon$ ist für alle $n \geq N$.
+\end{defn}
+
+\begin{defn}[gleichmäßige Konvergenz]
+Seien $(X,d)$ ein metrischer Raum und $A$ eine Teilmenge von $X$, $A \subseteq X$. Eine Folge von Funktionen $(f_n)_{n \in \mathbb{N}}$ mit $f_n: A \rightarrow \mathbb{R}$ heißt gleichmäßig konvergent gegen $f$, $f: A \rightarrow \mathbb{R}$, falls
+$$\lim\limits_{n \rightarrow \infty} \left(\sup\limits_{x \in A} |f_n(x)-f(x)|\right) = 0$$
+gilt.\\
+Mit anderen Worten heißt das, wenn für alle $\varepsilon > 0$ ein $N \in \mathbb{N}$, $N = N(\varepsilon)$, existiert, sodass $d(f_n(x),f(x)) < \varepsilon$ ist für alle $n \geq N$ und alle $x \in A$.
+\end{defn}
+
+\begin{rem}
+Aus der gleichmäßigen Konvergenz folgt natürlich die punktweise Konvergenz, die Umkehrung ist jedoch nicht erfüllt. Dies zeigt uns das nächste Beispiel.
+\end{rem}
+
+\begin{exa}
+Seien $X = \mathbb{R}$, $A = [0,1]$ und $f_n(x) := \frac{x^n}{1+x^{2n}}$ für $n \in \mathbb{N}$. 
+\begin{center}
+	\includegraphics[width=15em]{fn.jpg}
+\end{center}
+Die Folge $(f_n)$ ist punktweise konvergent und konvergiert gegen die folgende Grenzfunktion $f$,
+$$f(x) = \begin{cases}
+	0 &\text{, für } 0 \leq x < 1\\
+	\frac{1}{2} &\text{, für } x = 1.
+\end{cases}$$
+Die Folge $(f_n)$ ist aber nicht gleichmäßig konvergent, da für alle $n \in \mathbb{N}$ gilt:
+\begin{align*}
+	\sup\limits_{x \in [0,1]} |f_n(x)-f(x)| &= \sup\limits_{x \in [0,1)} \left| \frac{x^n}{1+x^{2n}} - 0 \right|\\
+	&= \sup\limits_{x \in [0,1)} \left| \frac{x^n}{1+x^{2n}} \right|\\
+	&= \sup\limits_{x \in [0,1)} \frac{x^n}{1+x^{2n}}\\
+	&= \frac{1}{2}.
+\end{align*}
+\end{exa}
+
+\begin{defn}[Teilfolge]
+Seien $(X,d)$ ein metrischer Raum und $(x_n)_{n \in \mathbb{N}}$ eine Folge in $X$. Eine Folge $(y_k)_{k \in \mathbb{N}}$ mit $y_k = x_{n_k}$ heißt Teilfolge von $(x_n)$, falls $(n_k)_{k \in \mathbb{N}}$ eine streng monoton wachsende Folge in $\mathbb{N}$ ist.
+\end{defn}
+
+\begin{thm}
+Seien $(X,d)$ ein metrischer Raum und $(x_n)_{n \in \mathbb{N}}$ eine konvergente Folge in $X$ mit dem Grenzwert $x$. Jede Teilfolge $(x_{n_k})_{k \in \mathbb{N}}$ von $(x_n)$ ist konvergent in $X$ gegen den Grenzwert $x$.
+\end{thm}
+
+\begin{proof}
+Da die Folge $(x_n)_{n \in \mathbb{N}}$ konvergent in $X$ ist, gibt es für alle $\varepsilon > 0$ ein $N \in \mathbb{N}$, sodass für alle $n \geq N$ $d(x_n,x) < \varepsilon$ gilt. Wir betrachten nun die Teilfolge $(x_{n_k})_{k \in \mathbb{N}}$. Da $(n_k)_{k \in \mathbb{N}}$ streng monoton wachsend ist, gilt für alle $k \geq N: n_k \geq n_N \geq N$. Setzen wir nun $K=N$, so gilt für alle $k \geq K$, dass $d(x_{n_k},x) < \varepsilon$ ist und somit konvergiert die Teilfolge gegen den Grenzwert $x$.
+\end{proof}
+
+\begin{defn}[Cauchyfolge]
+Seien $(X,d)$ ein metrischer Raum und $(x_n)_{n \in \mathbb{N}}$ eine Folge in $X$. Die Folge $(x_n)_{n \in \mathbb{N}}$ heißt Cauchyfolge, falls es für alle $\varepsilon > 0$ ein $N \in \mathbb{N}$, $N = N(\varepsilon)$, gibt, sodass $d(x_n,x_m) < \varepsilon$ für alle $n,m \geq N$ gilt:
+$$\forall \varepsilon > 0 \ \exists N \in \mathbb{N}: d(x_n,x_m) < \varepsilon \text{ für alle } n,m \geq N.$$
+\end{defn}
+
+\begin{exa}
+Sei $X = \mathbb{R}$ mit $d(x,y) = |x-y|$ für $x,y \in \mathbb{R}$. Weiters betrachten wir die Folge $(x_n)_{n \in \mathbb{N}} := \frac{n-1}{2n}$. Sei $\varepsilon > 0$ gegeben, so gilt für $n,m \in \mathbb{N}$:
+\begin{align*}
+	d(x_n,x_m) &= |x_n-x_m|\\
+	&= \left| \frac{n-1}{2n} - \frac{m-1}{2m} \right|\\
+	&= \left| \frac{1}{2} - \frac{1}{2n} - \frac{1}{2} + \frac{1}{2m} \right|\\
+	&= \left| \frac{1}{2n} - \frac{1}{2m} \right|.
+\end{align*}
+Sei nun ohne Beschränkung der Allgemeinheit $n \leq m$. Dann gilt:
+$$d(x_n,x_m) = \frac{1}{2n} - \frac{1}{2m} < \frac{1}{2n} < \varepsilon,$$
+falls $n \geq N > \frac{1}{2\varepsilon}$ gilt. Somit ist $(x_n)_{n \in \mathbb{N}}$ eine Cauchyfolge.
+\end{exa}
+
+\begin{exa}
+Sei $X = \mathbb{R}$ mit $d(x,y) = |x-y|$ für $x,y \in \mathbb{R}$ und sei $(x_n)_{n \in \mathbb{N}} = 2^n$. Die Folge ist streng monoton wachsend und nicht nach oben beschränkt. Weiters gilt:
+$$d(x_n,x_{n+1}) = |x_n - x_{n+1}| = |2^n - 2^{n+1}| = 2^n |1-2| = 2^n.$$
+Somit wird der Abstand zwischen zwei Folgengliedern immer größer bei wachsendem $n$ und aufgrund der Monotonie kann somit für alle $\varepsilon > 0$ kein $N \in \mathbb{N}$ existieren, dass $d(x_n,x_m) < \varepsilon$ für alle $n,m \geq N$ erfüllt ist. Also ist $(x_n)_{n \in \mathbb{N}} = 2^n$ keine Cauchyfolge in $(\mathbb{R},d)$.
+\end{exa}
+
+\begin{thm} \label{aus konv folgt cauchy}
+In einem metrischen Raum $(X,d)$ ist jede konvergente Folge $(x_n)_{n \in \mathbb{N}}$ in $X$ eine Cauchyfolge.
+\end{thm}
+
+\begin{proof}
+Sei $(x_n)_{n \in \mathbb{N}}$ eine Folge in $X$, sei $x$ der Grenzwert und sei $\varepsilon > 0$. Da $(x_n)_{n \in \mathbb{N}}$ konvergent ist, gibt es ein $N \in \mathbb{N}$, sodass $d(x_n,x) < \varepsilon$ ist, für alle $n \geq N$. Folglich gilt aber für alle $n,m \in \mathbb{N}$, $n,m \geq N$
+\begin{align*}
+	d(x_n,x_m) &\leq d(x_n,x) + d(x,x_m)\\
+	&< \varepsilon + \varepsilon\\
+	&= 2\varepsilon,
+\end{align*}
+und somit ist $(x_n)_{n \in \mathbb{N}}$ eine Cauchyfolge in $X$.
+\end{proof}
+
+\begin{rem}
+Die Umkehrung von Satz \ref{aus konv folgt cauchy} gilt im Allgemeinen nicht. Dies zeigt uns das nächste Beispiel.
+\end{rem}
+
+\begin{exa}
+Sei $X = \mathbb{Q}$ mit $d(x,y) = |x-y|$ für $x,y \in \mathbb{Q}$. Die Folge $(x_n)_{n \in \mathbb{N}} = \left(1 + \frac{1}{n} \right)^n$ ist eine Cauchyfolge in $(\mathbb{R},d)$ und somit auch in $(\mathbb{Q},d)$. Es ist $\lim\limits_{n \rightarrow \infty} \left(1 + \frac{1}{n} \right)^n = e$. Doch da die Eulersche Zahl $e$ nicht in $\mathbb{Q}$ liegt, konvergiert die Folge $\left(1 + \frac{1}{n} \right)^n$ in $\mathbb{Q}$ nicht, obwohl sie in $(\mathbb{Q},d)$ eine Cauchyfolge ist.
+\end{exa}
+
+\begin{thm}
+Seien $(X,d)$ ein metrischer Raum und $(x_n)_{n \in \mathbb{N}}$ eine Cauchyfolge in $X$. Gibt es eine konvergente Teilfolge $(x_{n_k})_{k \in \mathbb{N}}$ der Cauchyfolge mit Grenzwert $x$, so konvergiert die Cauchyfolge selbst gegen den Grenzwert $x$.
+\end{thm}
+
+\begin{proof}
+Seien $(x_n)_{n \in \mathbb{N}}$ eine Cauchyfolge in $X$ und $(x_{n_k})_{k \in \mathbb{N}}$ eine konvergente Teilfolge davon, welche gegen den Grenzwert $x$ konvergiert. Somit gibt es für alle $\varepsilon > 0$ ein $K \in \mathbb{N}$, sodass $d(x_{n_k},x) < \varepsilon$ ist. Weiters gibt es für alle $\varepsilon > 0$ ein $N \in \mathbb{N}$, sodass $d(x_n,x_m) < \varepsilon$ ist für alle $n,m \geq N$. Da $(n_k)_{k \in \mathbb{N}}$ eine streng monoton wachsende Folge ist, gibt es sicher ein $k \geq K$ mit $n_k \geq N$ und somit gilt
+\begin{align*}
+	d(x_n,x) &\leq d(x_n,x_{n_k}) + d(x_{n_k},x)\\
+	&< \varepsilon + \varepsilon\\
+	&= 2\varepsilon,
+\end{align*}
+für alle $n \geq N$. Damit konvergiert aber die Cauchyfolge $(x_n)_{n \in \mathbb{N}}$ gegen $x$.
+\end{proof}
+
+\begin{defn}[vollständig] \label{vollstaendig}
+Sei $(X,d)$ ein metrischer Raum. Der Raum $X$ heißt vollständig genau dann, wenn jede Cauchyfolge in $X$ konvergiert und der Grenzwert in $X$ liegt.
+\end{defn}
+
+\begin{rem}
+Aus Satz \ref{aus konv folgt cauchy} und Definition \ref{vollstaendig} erkennt man, dass in einem vollständigen metrischen Raum eine Folge genau dann konvergiert, wenn sie eine Cauchyfolge ist.
+\end{rem}
+
+\begin{exa}
+Sei $X = \mathbb{R}$ mit $d(x,y) = |x-y|$ für $x,y \in \mathbb{R}$, so ist $(\mathbb{R},d)$ vollständig.
+\end{exa}
+Der folgende Beweis wurde entnommen von Dieudonné\cite[S. 50-51]{dieudonne}.
+
+\begin{proof}
+Sei $(x_n)_{n \in \mathbb{N}}$ eine Cauchyfolge in $\mathbb{R}$. Wir konstruieren nun induktiv eine Folge $(n_k)_{k \in \mathbb{N}}$ natürlicher Zahlen, für die gilt, dass $n_{k+1}$ die kleinste natürliche Zahl ist mit $n_{k+1} > n_k$ und es soll gelten, dass $|x_s-x_t| < \frac{1}{2^{k+2}}$ für alle $s,t \geq n_{k+1}$ ist. Diese Forderung ist stets erfüllt, da $(x_n)_{n \in \mathbb{N}}$ eine Cauchyfolge in $\mathbb{R}$ ist.
+
+Betrachten wir nun die Folge $(I_k)_{k \in \mathbb{N}}$ von Intervallen, gegeben durch $I_k := \lbrack x_{n_k} - \frac{1}{2^k}, x_{n_k} + \frac{1}{2^k} \rbrack$, so sehen wir, dass $I_{k+1} \subseteq I_k$ für $\left| x_{n_k} - x_{n_{k+1}} \right| < \frac{1}{2^{k+1}}$ gilt. Wir haben also eine Folge ineinander geschachtelter abgeschlossener Intervalle und nach dem Durchschnittsatz von Canter ist der Durchschnitt aller Intervalle $I_k$ ungleich der leeren Menge. Folglich existiert ein $x \in \mathbb{R}$, sodass gilt:
+$$\bigcap\limits_{k=1}^\infty I_k = \lbrace x \rbrace.$$
+Weiters gilt aber nach Definition der Intervalle $I_k$, dass für alle $l \geq n_k$, $x_l \in I_k$ ist. Somit ergibt sich, dass $|x_l-x| \leq \frac{1}{2^{k-1}}$ für alle $l \geq n_k$ gilt. Das bedeutet aber zugleich, dass die Cauchyfolge $(x_n)_{n \in \mathbb{N}}$ gegen $x$, $x \in \mathbb{R}$, konvergiert und somit ist $(\mathbb{R},d)$ vollständig.
+\end{proof}

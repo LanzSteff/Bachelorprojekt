@@ -1,0 +1,21 @@
+\section{Approximation von Funktionen}
+Da die Approximation von Funktionen nicht zu den gewöhnlichen Aufgaben eines Elman Netzes gehört, habe ich versucht eine Funktion mit dem selben Netz, welches bei der System Identification verwendet wurde, zu approximieren. Das heißt, es wurde die selbe Architektur (Abbildung \ref{arche}), der selbe Lernparameter $\eta = 0,7$, die selbe Aktivierungsfunktion $\varphi(x) = \frac{1}{1+e^{-x}}$ und die gleich Menge an 100 Input- und Outputwerten verwendet. Als die zu approximierende Funktion wählte ich
+$$e^{-\frac{x}{4}} \cos x.$$
+Diese Funktion wird in Abbildung \ref{function} dargestellt.
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=6cm]{func.png}
+	\caption{Funktion}
+	\label{function}
+\end{figure} 
+
+Nach 100 Epochen meines Netzes erhalte ich folgende Gegenüberstellung (Abbildung \ref{result3}), wobei die blaue Linie die zu approximierende Funktion und die violetten Punkte den Netzoutput darstellen.
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=6cm]{approx.png}
+	\caption{Approximation}
+	\label{result3}
+\end{figure}
+
+\section{Fazit}
+Wie die Gegenüberstellung zeigt, ist die Approximation noch nicht ausgereift und man kann mit einer anderen Architektur eventuell bessere Werte erzielen. Außerdem ist diese Gegenüberstellung ein Ausnahmebeispiel meines Netzes und nicht alle 100 Epochen wurden so gute Ergebnisse getroffen. Der Gesamtfehler liegt hier bei $E = 1,3207026786535492$, wobei der Gesamtfehler der System Identification unter $0,2$ liegt. Abschließend kann man sagen, dass das Problem der System Identification mittels der durch die dynamische Backpropagation trainierten Elman Netze gute Ergebnisse erzielt und für die Funktionenapproximation größere Fehler aufweist.
